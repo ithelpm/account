@@ -6,13 +6,15 @@ class indoIO
 { 
     public static void IO(String path)
     {
-        String encoding = "UTF-8";
-        int txt_long;
+        String encode = "UTF-8";
+        FileReader reader = new FileReader(path);
         File file = new File(path);
-        if (file.isFile() && file.exists())
+        BufferedReader br = new BufferedReader(reader);
+        String line = br.readLine();
+        while(line != null)
         {
-            InputStreamReader read = new InputStreamReader(file, encoding);
-            txt_long = read.read();
+            System.out.println(line);
         }
+        br.close();
     }
 }
