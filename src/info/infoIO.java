@@ -2,7 +2,7 @@ package info;
 
 import java.io.*;
 
-class indoIO
+public class infoIO
 { 
     public static void IO(String path)
     {
