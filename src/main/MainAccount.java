@@ -4,21 +4,23 @@ import java.io.*;
 
 public class MainAccount
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException,Error
     {
-        
+        infoIO.IO("C:\\Users\\user\\Desktop\\javaCrawler.txt");
+    }
+    private static void interface()
+    {
+
     }
 }
 
-public class infoIO {
-    public static void IO(String path)
+class infoIO {
+    public static void IO(String path) throws IOException
     {
-        String encode = "UTF-8";
-        FileReader reader = new FileReader(path);
-        File file = new File(path);
-        BufferedReader br = new BufferedReader(reader);
+        BufferedReader br = new BufferedReader(new FileReader(path));
         String line = br.readLine();
-        while(line != null)
+        System.out.println(br.readLine());
+        while((line = br.readLine() ) != null)
         {
             System.out.println(line);
         }
