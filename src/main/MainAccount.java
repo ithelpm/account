@@ -6,11 +6,12 @@ public class MainAccount
 {
     public static void main(String[] args)
     {
-        
+
     }
 }
 
-public class infoIO {
+public class infoIO
+{
     public static void IO(String path)
     {
         String encode = "UTF-8";
