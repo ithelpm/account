@@ -7,27 +7,9 @@ public class MainAccount
 {
     public static void main(String[] args)
     {
-<<<<<<< HEAD
 
     }
 }
-
-public class infoIO
-{
-    public static void IO(String path)
-=======
-        if(FileCookie())
-        {
-            fileCreate();
-            System.out.print("\033\143");
-            System.out.println();
-        }else{
-
-        }
-        Interface.MainInterface();
-        System.out.print("\033\143");
-        System.out.println();
-    }
     protected static Scanner fileFind()
     {
         try{
@@ -57,7 +39,6 @@ public class infoIO
         return bool;
     }
     private static boolean FileCookie()
->>>>>>> be39081ad755ffd523496bb34ef2554a9324ad59
     {
         boolean bool = fileCreate();
         boolean cookie;
