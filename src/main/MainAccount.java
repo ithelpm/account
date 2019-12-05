@@ -9,12 +9,12 @@ public class MainAccount
     {
 
     }
-}
     protected static Scanner fileFind()
     {
+        Scanner reader = new Scanner(System.in);
         try{
             Variable.myfile = new File(Variable.fileName);
-            Scanner reader = new Scanner(Variable.myfile);
+            reader = new Scanner(Variable.myfile);
         }catch(FileNotFoundException e){
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -37,16 +37,6 @@ public class MainAccount
         }
         sc.close();
         return bool;
-    }
-    private static boolean FileCookie()
-    {
-        boolean bool = fileCreate();
-        boolean cookie;
-        if(bool)
-            cookie = true;
-        else
-            cookie = false;
-        return cookie;
     }
     static class Interface
     {
