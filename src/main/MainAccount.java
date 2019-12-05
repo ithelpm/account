@@ -7,14 +7,13 @@ public class MainAccount
 {
     public static void main(String[] args)
     {
-        String readableFile;
         if(FileCookie())
         {
             fileCreate();
             System.out.print("\033\143");
             System.out.println();
         }else{
-            readableFile = fileFind();
+
         }
         Interface.MainInterface();
         System.out.print("\033\143");
@@ -22,35 +21,40 @@ public class MainAccount
     }
     protected static Scanner fileFind()
     {
-        if(Variable.fileName != null)
-            Variable.myFile = new File(Variable.fileName);
-        Scanner reader = new Scanner(Variable.myFile);
+        try{
+            Variable.myfile = new File(Variable.fileName);
+            Scanner reader = new Scanner(Variable.myfile);
+        }catch(FileNotFoundException e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
         return reader;
     }
     protected static boolean fileCreate()
     {
-        Scanner sc = new Scanner();
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter your file name: ");
         Variable.fileName = sc.next();
-        path = Variable.path + Variable.fileName;
+        String path = Variable.path + Variable.fileName;
         System.out.println();
         File File = new File(path);
-        boolean bool = file.mkdirs();
+        boolean bool = File.mkdirs();
         if(bool){
            System.out.println("Directory created successfully");
         }else{
            System.out.println("Sorry couldnt create specified directory:\r\n maybe already exist??");
         }
+        sc.close();
         return bool;
     }
-    private static int FileCookie()
+    private static boolean FileCookie()
     {
-        boolean bool = filecreate();
-        int cookie;
+        boolean bool = fileCreate();
+        boolean cookie;
         if(bool)
-            cookie = 1;
+            cookie = true;
         else
-            cookie = 0;
+            cookie = false;
         return cookie;
     }
     static class Interface
