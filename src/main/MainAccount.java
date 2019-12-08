@@ -3,40 +3,21 @@ package main;
 import java.io.*;
 import java.util.*;
 
-public class MainAccount
-{
-    public static void main(String[] args)
-    {
+public class MainAccount {
+    public static void main(String[] args) {
 
     }
-    protected static Scanner fileFind()
+
+    protected static void FileCreator()
     {
-        Scanner reader = new Scanner(System.in);
-        try{
-            Variable.myfile = new File(Variable.fileName);
-            reader = new Scanner(Variable.myfile);
-        }catch(FileNotFoundException e){
-            System.out.println("An error occurred.");
+        try {
+            Process p = Runtime.getRuntime().exec("python fileCreator.py");
+            p.wait(1000);
+            p.destroy();
+        } catch (IOException|InterruptedException e) {
+            System.out.println("cannot create file or "+" fileCreator.py "+" mot found");
             e.printStackTrace();
         }
-        return reader;
-    }
-    protected static boolean fileCreate()
-    {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter your file name: ");
-        Variable.fileName = sc.next();
-        String path = Variable.path + Variable.fileName;
-        System.out.println();
-        File File = new File(path);
-        boolean bool = File.mkdirs();
-        if(bool){
-           System.out.println("Directory created successfully");
-        }else{
-           System.out.println("Sorry couldnt create specified directory:\r\n maybe already exist??");
-        }
-        sc.close();
-        return bool;
     }
     static class Interface
     {
@@ -92,25 +73,11 @@ public class MainAccount
             
         }
     }
-    static class infoIO
-    {
-        public static void IO(String path) throws IOException
-        {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            String line = br.readLine();
-            System.out.println(br.readLine());
-            while((line = br.readLine() ) != null)
-            {
-                System.out.println(line);
-            }
-            br.close();
-        }
-    }
     static class Variable
     {
         Variable(){}
         public static File myfile;
-        public static String fileName;
+        public static String fileName = "";
         public static String path = "C:\\Windows\\";
         public static int maximize = 0;
         public static String i = "0";
