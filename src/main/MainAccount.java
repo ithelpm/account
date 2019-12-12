@@ -2,22 +2,34 @@ package main;
 
 import java.io.*;
 import java.util.*;
+import java.nio.charset.*;
 
-public class MainAccount {
-    public static void main(String[] args) {
-
+public class MainAccount
+{
+    public static void main(String[] args)
+    {
+        FileCreator();
     }
 
-    protected static void FileCreator()
+    protected static void FileCreator() 
     {
-        try {
-            Process p = Runtime.getRuntime().exec("python fileCreator.py");
-            p.wait(1000);
-            p.destroy();
-        } catch (IOException|InterruptedException e) {
-            System.out.println("cannot create file or "+" fileCreator.py "+" mot found");
+        File file = new File(Variable.path);
+        boolean bool = true;
+        try{
+            file.createNewFile();
+        }catch(IOException e){
+            bool = false;
             e.printStackTrace();
         }
+        if (bool)
+        {
+            System.out.println("File is created!");
+        } else {
+            System.out.println("File already exists.");
+        }
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(Variable.path), StandardCharsets.UTF_8);
+        writer.write("Test data");
+        writer.close();
     }
     static class Interface
     {
@@ -78,7 +90,7 @@ public class MainAccount {
         Variable(){}
         public static File myfile;
         public static String fileName = "";
-        public static String path = "C:\\Windows\\";
+        public static String path = "C:\\Windows\\java's_data.txt";
         public static int maximize = 0;
         public static String i = "0";
         public static String j = "0";
