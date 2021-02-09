@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 import java.nio.file.*;
 import java.util.stream.*;
-import java.nio.*;
 
 public class App {
     protected static Path scriptLib;
@@ -13,33 +12,35 @@ public class App {
     public static void main(String[] args) {
         String cwd = "user.dir";
         PathTool pt = new PathTool();
-        pt.isCreated();
         txtPath = pt.findFolder(new File(System.getProperty(cwd)), "txt");
+        System.out.println(txtPath);
         scriptLib = pt.findFolder(new File(System.getProperty(cwd)), "pythonScript");
+        Writer wt = new Writer();
         if(pt.isCreated()) {
-            Writer wt = new Writer();
 
         } else {
             dataPath = pt.executeScript(scriptLib, "readPath.py");
+            wt.appendData(txtPath.toString(), "DataSign.txt", "choosedPath", dataPath);
         }
     }
 }
 
 class Writer {
-    private static void createNewFile(String Path, String Name){
-        File file = new File(Path+Name);
+    private static File createNewFile(String Path, String Name){
+        File file = new File(Path+"\\"+Name);
         try{
             if(file.createNewFile()){}
         } catch(IOException e) {
             System.err.println("An error occured when creating file:"+e);
         }
+        return file;
     }
 
     public void appendData(String path, String Name, String usage, String data) {
-        createNewFile(path, Name);
-        File file = new File(path+Name);
+        
+        File file = createNewFile(path, Name);
         try(BufferedWriter out = new BufferedWriter(new FileWriter(file, true))){
-            out.write(usage+":"+data);
+            out.write("["+usage+":"+data+"]");
         } catch(IOException e) {
             System.err.println("An error occured when writing file:"+e);
         }
@@ -106,7 +107,7 @@ class PathTool {
 
     public boolean isCreated() {
         boolean flag = false;
-        File checkFile = new File(App.scriptLib.toString());
+        File checkFile = new File(App.txtPath.toString());
         if(checkFile.isDirectory()) {
             String[] files = checkFile.list();
             if(files.length>0) {
@@ -114,5 +115,11 @@ class PathTool {
             }
         }
         return flag;
+    }
+}
+
+class Gui {
+    public Gui() {
+
     }
 }

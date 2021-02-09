@@ -1,0 +1,10 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "f:\\JavaFx11\\javafx-sdk-11.0.2\\lib\\javafx.media.jar",
+        "f:\\JavaFx11\\javafx-sdk-11.0.2\\lib\\javafx.swing.jar",
+        "f:\\JavaFx11\\javafx-sdk-11.0.2\\lib\\javafx.web.jar",
+        "f:\\JavaFx11\\javafx-sdk-11.0.2\\lib\\javafx-swt.jar"
+    ],
+    
+}
