@@ -1,12 +1,12 @@
 {
-    "configuration": [
+    "configurations": [
         {
             "type": "java",
-            "name": "jfx",
+            "name": "Launch App",
             "request": "launch",
-            "vmArgs": "--module-path F:\\JavaFx11\\javafx-sdk-11.0.2\\lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "app.Main",
-            "projectName": "App"
+            "mainClass": "com.github.ithelpm.App",
+            "vmArgs": "--module-path F:\\JavaFx15\\javafx-sdk-15.0.1\\lib --add-modules javafx.controls,javafx.fxml",
+            "projectName": "Account"
         }
     ]
 }
