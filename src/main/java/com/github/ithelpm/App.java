@@ -9,7 +9,9 @@ import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import com.opencsv.CSVWriter;
+import com.opencsv.CSVReader;
 import javafx.application.Application;
+import java.io.BufferedReader;
 
 public class App extends Application {
     protected static Path scriptLib;
