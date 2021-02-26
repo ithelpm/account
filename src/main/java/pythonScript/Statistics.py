@@ -1,8 +1,6 @@
 import sys
-sys.path.append('C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python39\\Lib\\site-packages')
-
 import numpy as np
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 import csv
 
 EVAAIR = "green"
@@ -57,7 +55,7 @@ def grapHistogram_Output(_Date, _Sum):
 
 
 if __name__ == '__main__':
-    fileName = "test.csv"
+    fileName = "Spent.csv"
     with open(fileName, 'r') as csvFile:
         csvReader = csv.reader(csvFile)
         csvList = list(csvReader)
@@ -69,8 +67,6 @@ if __name__ == '__main__':
     csvData_Date, csvData_Sum = listDataIntegration(removeNone(csvList, csvRowCnt), csvRowCnt)
 
     grapHistogram_Output(csvData_Date, csvData_Sum)
-    
-      
 
 '''
 Deadline : Feb 26, 2021

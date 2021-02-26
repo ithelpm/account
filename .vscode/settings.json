@@ -3,5 +3,9 @@
         "lib/**/*.jar",
     ],
     "java.configuration.updateBuildConfiguration": "automatic",
+    "python.linting.pylintEnabled": true,
+    "python.linting.banditEnabled": false,
+    "python.linting.enabled": true,
+    "python.pythonPath": "C:\\Python39\\python.exe",
     
 }
