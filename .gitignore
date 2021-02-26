@@ -18,5 +18,5 @@ buildNumber.properties
 .idea/*
 !.idea/runConfigurations/
 
-.classpath
 .vscode
+.classpath
