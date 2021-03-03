@@ -3,15 +3,11 @@ package com.github.ithelpm;
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
-import java.util.stream.*;
 import javafx.stage.Stage;
 import javafx.fxml.*;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
-import com.opencsv.CSVWriter;
-import com.opencsv.CSVReader;
 import javafx.application.Application;
-import java.io.BufferedReader;
 
 public class App extends Application {
     protected static Path scriptLib;
@@ -79,38 +75,12 @@ class Writer {
         }
         return file;
     }
-
-    public void appendDataNTitle(String path, String Name, String usage, String... data) {
-        String[] content = Arrays.copyOf(data, data.length+1);
-        content[1] = content[0];
-        content[0] = usage;
-        File file = createNewFile(path, Name);
-        try (BufferedWriter out = new BufferedWriter(new FileWriter(file, true))) {
-            CSVWriter writer = new CSVWriter(out);
-            for(String e : content) {
-                System.out.println(e);
-            }
-            writer.writeNext(content);
-            writer.close();
-        } catch (IOException e) {
-            System.err.println("An error occured when writing file:" + e);
-        }
-    }
-
-    public void appendData(String path, String Name, String... data) {
-        File file = createNewFile(path, Name);
-        try (CSVWriter writer = new CSVWriter(new FileWriter(file, false))) {
-            writer.writeNext(data);
-        } catch (IOException e) {
-            System.err.println("An error occured when writing file:" + e);
-        }
-    }
 }
 
 class PathTool {
-    public String executeScript(Path from, String scriptName) {
+    public String executeScript(Path from, String command) {
         try {
-            ProcessBuilder pb = new ProcessBuilder().command("python", "-u", from.toString() + "\\" + scriptName);
+            ProcessBuilder pb = new ProcessBuilder().command("python", "-u", from.toString() + "\\" + command);
             Process p = pb.start();
             p.waitFor();
             Scanner sc = new Scanner(p.getInputStream());
@@ -126,19 +96,6 @@ class PathTool {
             System.err.println(e);
         }
         return "";
-    }
-
-    public String executeScript() {
-        return executeScript(null, "");
-    }
-
-    public List<Path> findPath(Path startFrom, String Name) throws IOException {
-        List<Path> path;
-        try (Stream<Path> stream = Files.find(startFrom, Integer.MAX_VALUE,
-                (p, BasicFileAttributes) -> p.getFileName().toString().equalsIgnoreCase(Name))) {
-            path = stream.collect(Collectors.toList());
-        }
-        return path;
     }
 
     public Path findFolder(File rootDir, String name) {

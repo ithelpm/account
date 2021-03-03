@@ -18,8 +18,13 @@ public class ChooserController {
     @FXML
     private void buttonEvent(ActionEvent event) {
         Writer wt = new Writer();
+        PathTool pt = new PathTool();
         App.storagePath = chooser.showDialog(null).toPath().toString();
-        wt.appendDataNTitle(App.dataPath.toString(), App.dataName, "Path2Data", App.storagePath+"\\"+App.storage);
+        //append data =>
+        pt.executeScript(App.scriptLib, "csvWriter.py "+);
+        //.
+        //.
+        //=================================================================
         Stage stage =(Stage)button.getScene().getWindow();
         stage.setScene(App.mainScene(App.fxmlPath.toString()));
     }

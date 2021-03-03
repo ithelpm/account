@@ -20,17 +20,17 @@ public class AppController {
             App.data2write=price.getText();
             price.setText("");
         }
-        Writer wt = new Writer();
-        wt.appendData(App.storagePath, App.storage, App.data2write);
+        
     }
 
     @FXML
     private void showPic() {
-
+        PathTool pt = new PathTool();
+        pt.executeScript(App.scriptLib, "Statics.py");
     }
 
     @FXML
     private void resetCSV() {
-
+        
     }
 }

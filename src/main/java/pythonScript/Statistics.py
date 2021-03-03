@@ -49,7 +49,6 @@ def grapHistogram_Output(_Date, _Sum):
     plt.xlabel("Price(Daily)")
     plt.ylabel("Date")
 
-
     plt.savefig("Account.png", bbox_inches='tight', dpi=800)
 
 
@@ -67,6 +66,8 @@ if __name__ == '__main__':
     csvData_Date, csvData_Sum = listDataIntegration(removeNone(csvList, csvRowCnt), csvRowCnt)
 
     grapHistogram_Output(csvData_Date, csvData_Sum)
+
+
 
 '''
 Deadline : Feb 26, 2021
